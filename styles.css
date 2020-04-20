@@ -1,5 +1,212 @@
-body {
-  background-color: black;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h2, h3, h4, h5, h6, p {
+  color: white;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-family: "upgrade", sans-serif;
+  font-weight: 500;
+  color: white;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+}
+
+.menu {
+  background-color: #071013;
+  height: 2158px;
+}
+.menu img {
+  display: block;
+  margin: auto;
+  margin-top: 160px;
+}
+.menu ul {
+  font-family: "Montserrat", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 4px;
+  margin-top: 90px;
+}
+.menu ul li {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.main {
+  background-color: darkgreen;
+}
+.main .header-text {
+  position: absolute;
+  top: 297px;
+  left: 225px;
+}
+.main header {
+  position: relative;
+  height: 700px;
+  background-image: url(assets/black-man-with-cap-and-watch.png);
+}
+.main header h1 {
+  box-sizing: content-box;
+  font-family: "upgrade", sans-serif;
+  letter-spacing: 4px;
+  font-size: 64px;
+  text-align: right;
+  text-transform: uppercase;
+}
+.main header h1::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 130px;
+  background-color: white;
+  right: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.main header p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  position: absolute;
+  bottom: 20px;
+  letter-spacing: 2px;
+  right: -320px;
+}
+.main .featured-collection-container {
+  display: flex;
+  flex-direction: row;
+  height: 423px;
+}
+.main .featured-collection-container h1 {
+  text-transform: uppercase;
+  font-family: "upgrade", sans-serif;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 160px;
+}
+.main .featured-collection-container .hoodies-container {
+  background-color: darkred;
+  background-image: url(assets/Black-Lifestyle-Back.png);
+  height: 100%;
+}
+.main .featured-collection-container .summer-container {
+  background-color: orange;
+  background-image: url(assets/palm-trees.png);
+}
+.main .featured-collection-container .accessories-container {
+  background-color: grey;
+  background-image: url(assets/black-man-with-headphones.png);
+}
+.main .featured-collection-container > div {
+  flex: 1;
+}
+.main .catalogue-container {
+  height: 400px;
+  background: white;
+  background-image: url(assets/graffiti-walls.png);
+  text-transform: uppercase;
+  position: relative;
+}
+.main .catalogue-container h1 {
+  top: 100px;
+  left: 650px;
+  position: absolute;
+  font-size: 64px;
+  text-align: right;
+}
+.main .catalogue-container h1::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 130px;
+  background-color: white;
+  right: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.main .about-us-container {
+  display: grid;
+  height: 635px;
+  grid-template-columns: 1fr 1fr;
+}
+.main .about-us-container .about-us-square {
+  background-color: darkcyan;
+  position: relative;
+  background-image: url(assets/women-facing-away.png);
+}
+.main .about-us-container .about-us-square h1 {
+  font-size: 64px;
+  position: absolute;
+  top: 247px;
+  left: 96px;
+}
+.main .about-us-container .about-us-square h1::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 130px;
+  background-color: white;
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.main .about-us-container .photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.main .about-us-container .photo-grid .photo-square1 {
+  background-color: darkorange;
+  background-image: url(assets/man-facing-wall-with-symbols.png);
+}
+.main .about-us-container .photo-grid .photo-square2 {
+  background-color: darkred;
+  background-image: url(assets/women-standing-on-fence.png);
+}
+.main .about-us-container .photo-grid .photo-square3 {
+  background-color: darkgoldenrod;
+  background-image: url(assets/man-opening-smoke.png);
+}
+.main .about-us-container .photo-grid .photo-square4 {
+  background-color: darkslateblue;
+  background-image: url(assets/women-facing-down.png);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 240px;
+}
+.footer h2 {
+  font-family: "upgrade", sans-serif;
+  text-transform: uppercase;
+  width: 200px;
+  color: #071013;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+}
+.footer h2::before {
+  content: url(assets/Deco.png);
+  position: absolute;
+  top: -10px;
+  left: 0px;
+}
+.footer p {
+  text-transform: uppercase;
+  color: #071013;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 4px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

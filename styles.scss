@@ -1,0 +1,221 @@
+// Colours
+
+$black: #071013;
+
+// Fonts
+$upgrade: 'upgrade', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
+
+
+
+
+*{
+    margin:0;
+    padding:0;
+}
+h2 , h3 , h4, h5, h6, p{
+    color:white;
+    // font-family:upgrade;
+}
+
+h1{
+    text-transform:uppercase;
+    font-family:$upgrade;
+    font-weight:500;
+    color:white;
+}
+
+.container{
+    display:grid;
+    grid-template-columns: 330px 1fr
+}
+
+.menu{
+    background-color:$black;
+    height:2158px;
+    img{
+        display:block;
+        margin:auto;
+        margin-top:160px;
+    }
+    ul{
+        font-family:$montserrat;
+        font-weight: lighter;
+        letter-spacing: 4px;
+        margin-top:90px;
+        li{
+            text-align:center;
+            margin-bottom:60px;
+        }
+    }
+}
+.main{
+    background-color:darkgreen;
+    .header-text{
+        // background-color:darkred;
+        position:absolute;
+        top:297px;
+        left:225px;
+    }
+    header{
+        position:relative;
+        height:700px;
+        background-image: url(assets/black-man-with-cap-and-watch.png);
+        h1{
+            &::after{
+                content:"";
+                position:absolute;
+                width:9px;
+                height:130px;
+                background-color:white;
+                right:-35px;
+                top:50%;
+                transform:translateY(-50%);
+            }
+            box-sizing:content-box;
+            font-family: $upgrade;
+            letter-spacing:4px;
+            font-size:64px;
+            text-align:right;
+            text-transform:uppercase;
+        }
+        p{
+            font-family: $montserrat;
+            font-size:14px;
+            position:absolute;
+            bottom: 20px;
+            letter-spacing:2px;
+            right: -320px;
+        }
+    }
+    .featured-collection-container{
+        display:flex;
+        flex-direction:row;
+        height:423px;
+        h1{
+            text-transform:uppercase;
+            font-family:$upgrade;
+            font-weight:500;
+            letter-spacing:4px;
+            text-align:center;
+            margin-top:160px;
+        }
+        .hoodies-container{
+            background-color:darkred;
+            background-image:url(assets/Black-Lifestyle-Back.png);
+            height:100%;
+        }
+        .summer-container{
+            background-color:orange;
+            background-image:url(assets/palm-trees.png);
+        }
+        .accessories-container{
+            background-color:grey;
+            background-image:url(assets/black-man-with-headphones.png);
+        }
+    }
+         .featured-collection-container > div{
+            flex:1;
+    }
+    .catalogue-container{
+        height:400px;
+        background:white;
+        background-image:url(assets/graffiti-walls.png);
+        text-transform:uppercase;
+        position:relative;
+        h1{
+            top:100px;
+            left:650px;
+            position:absolute;
+            font-size:64px;
+            text-align:right;
+            &::after{
+                content:"";
+                position:absolute;
+                width:9px;
+                height:130px;
+                background-color:white;
+                right:-35px;
+                top:50%;
+                transform:translateY(-50%);
+            }   
+        }
+    }
+    .about-us-container{
+        display:grid;
+        height:635px;
+        grid-template-columns:1fr 1fr;
+        .about-us-square{
+            background-color:darkcyan;
+            position:relative;
+            background-image:url(assets/women-facing-away.png);
+            h1{
+                font-size:64px;
+                position:absolute;
+                top:247px;
+                left:96px;
+                &::after{
+                    content:"";
+                    position:absolute;
+                    width:9px;
+                    height:130px;
+                    background-color:white;
+                    left:-35px;
+                    top:50%;
+                    transform:translateY(-50%);
+                } 
+            }
+
+        }
+        .photo-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            .photo-square1{
+                background-color:darkorange;
+                background-image:url(assets/man-facing-wall-with-symbols.png);
+            }
+            .photo-square2{
+                background-color:darkred;
+                background-image:url(assets/women-standing-on-fence.png);
+            }
+            .photo-square3{
+                background-color:darkgoldenrod;
+                background-image:url(assets/man-opening-smoke.png);
+            }
+            .photo-square4{
+                background-color:darkslateblue;
+                background-image:url(assets/women-facing-down.png);
+            }
+        }
+    }
+}
+.footer{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+    h2{
+        font-family:$upgrade;
+        text-transform:uppercase;
+        width:200px;
+        color:$black;
+        font-weight:400;
+        text-align:center;
+        position:relative;
+        &::before{
+            content:url(assets/Deco.png);
+            position:absolute;
+            top:-10px;
+            left:0px;
+        }
+    }
+    height:240px;
+p{
+    text-transform:uppercase;
+    color:$black;
+    font-family: $montserrat;
+    letter-spacing: 4px;
+    text-align:center;
+}
+}
