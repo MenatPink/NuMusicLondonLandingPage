@@ -6,6 +6,9 @@ $black: #071013;
 $upgrade: 'upgrade', sans-serif;
 $montserrat: 'Montserrat', sans-serif;
 
+// Transition
+$leftMove: 20px;
+
 
 
 
@@ -75,7 +78,6 @@ h1{
     }
 }
 .main{
-    background-color:darkgreen;
     .header-text{
         // background-color:darkred;
         position:absolute;
@@ -120,19 +122,41 @@ h1{
         display:flex;
         flex-direction:row;
         height:423px;
-        h1{
-            text-transform:uppercase;
-            font-family:$upgrade;
-            font-weight:500;
-            letter-spacing:4px;
+        .collection-container{
             text-align:center;
-            margin-top:160px;
+            h1{
+                display:inline-block;
+                margin:auto;
+                position:relative;
+                cursor:pointer;
+                text-transform:uppercase;
+                font-family:$upgrade;
+                font-weight:500;
+                letter-spacing:4px;
+                text-align:center;
+                margin-top:160px;
+                    &::after{
+                        content:"";
+                        width:0;
+                        height:2px;
+                        background-color:white;
+                        position:absolute;
+                        bottom:-20px;
+                        left:0;
+                        transition:all 0.4s ease;
+                    }
+                    &:hover::after{
+                        width:100%;
+                    }
+            }
         }
         .hoodies-container{
             background-color:darkred;
             background-image:url(assets/Black-Lifestyle-Back.png);
             background-repeat:no-repeat;
             background-size:cover;
+            background-position:center;
+            width:100%;
             height:100%;
         }
         .summer-container{
@@ -140,12 +164,14 @@ h1{
             background-image:url(assets/palm-trees.png);
             background-repeat:no-repeat;
             background-size:cover;
+            background-position:center;
         }
         .accessories-container{
             background-color:grey;
             background-image:url(assets/black-man-with-headphones.png);
             background-repeat:no-repeat;
             background-size:cover;
+            background-position:center;
         }
     }
          .featured-collection-container > div{
@@ -159,12 +185,16 @@ h1{
         background-size:cover;
         text-transform:uppercase;
         position:relative;
+        &:hover > h1{
+            left:630px;
+        }
         h1{
             top:100px;
             left:650px;
             position:absolute;
             font-size:64px;
             text-align:right;
+            transition: all 0.5s ease;
             &::after{
                 content:"";
                 position:absolute;
@@ -181,17 +211,24 @@ h1{
         display:grid;
         height:635px;
         grid-template-columns:1fr 1fr;
+        &:hover > div > h1{
+            left:116px;
+        }
         .about-us-square{
             background-color:darkcyan;
             position:relative;
             background-image:url(assets/women-facing-away.png);
             background-repeat:no-repeat;
             background-size:cover;
+            width:100%;
+            height:100%;
+
             h1{
                 font-size:64px;
                 position:absolute;
                 top:247px;
                 left:96px;
+                transition:all 0.5s ease;
                 &::after{
                     content:"";
                     position:absolute;
@@ -244,6 +281,10 @@ h1{
     justify-content:space-evenly;
     grid-column-start:1;
     grid-column-end:3;
+    padding:60px;
+    p{
+        font-size:1rem;
+    }
     h2{
         font-family:$upgrade;
         text-transform:uppercase;
@@ -252,6 +293,7 @@ h1{
         font-weight:400;
         text-align:center;
         position:relative;
+        font-size:1.3rem;
         &::before{
             content:url(assets/Deco.png);
             position:absolute;
@@ -296,73 +338,78 @@ p{
         opacity:0;
         transition: all 0.4s ease;
     }
+
+    .toggler{
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:2;
+        cursor:pointer;
+        width:60px;
+        height:60px;
+        opacity:0;
+        margin:1rem;
+    }
+    .hamburger{
+        position:absolute;
+        top:0;
+        left:0;
+        width:60px;
+        height:60px;
+        padding: 1rem;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:20px;
+        z-index:1;
+        cursor:pointer;
+        margin-left:30px;
+    }
+    .hamburger > div{
+        position:relative;
+        width:100%;
+        height:2px;
+        background-color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        transition: all 0.4s ease;
+        // top and bottom lines
+        &::before, &::after{
+            content:'';
+            position:absolute;
+            z-index:1;
+            top: -10px;
+            width:100%;
+            height:inherit;
+            background-color:inherit;
+        }
+        // Moves line down
+        &::after{
+            top: 10px;
+        }
+    }
+    .toggler:checked + .hamburger > div {
+        transform: rotate(135deg);
+        // Set the Before and After
+        &::before, &::after{
+            top:0;
+            transform: rotate(90deg);
+        }
+    }
+    .toggler:checked:hover + .hamburger > div{
+        transform:rotate(225deg);
+    }
             .fixed-menu{
                 display:block;
                 position:fixed;
                 overflow:hidden;
+                width:100px;
+                height:100px;
+                top:0;
+                left:0;
                 z-index:1;
-                width:100%;
-                height:100%;
-                .toggler{
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    z-index:2;
-                    cursor:pointer;
-                    width:60px;
-                    height:60px;
-                    opacity:0;
-                    margin:1rem;
-                }
-                .hamburger{
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    z-index: 1;
-                    width:60px;
-                    height:60px;
-                    padding: 1rem;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    margin:20px;
-                    margin-left:30px;
-                }
-                .hamburger > div{
-                    position:relative;
-                    width:100%;
-                    height:2px;
-                    background-color:white;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    transition: all 0.4s ease;
-                    // top and bottom lines
-                    &::before, &::after{
-                        content:'';
-                        position:absolute;
-                        z-index:1;
-                        top: -10px;
-                        width:100%;
-                        height:inherit;
-                        background-color:inherit;
-                    }
-                    // Moves line down
-                    &::after{
-                        top: 10px;
-                    }
-                }
-                .toggler:checked + .hamburger > div {
-                    transform: rotate(135deg);
-                    // Set the Before and After
-                    &::before, &::after{
-                        top:0;
-                        transform: rotate(90deg);
-                    }
-                }
-                .toggler:checked:hover + .hamburger > div{
-                    transform:rotate(225deg);
-                }
+                
             }
             // Show Menu
             .fixed-menu .toggler:checked ~ .menu{
@@ -370,4 +417,71 @@ p{
                 opacity:1;
                 height:100%;
             }
+}
+
+@media only screen and (max-width:1070px){
+    .main{
+        .header-text{
+            left:50%;
+            transform:translateX(-50%);
+            h1{
+                text-align:center;
+            }
+            p{
+                width:246.3px;
+                bottom:-30px;
+                left:50%;
+                transform:translateX(-50%);
+            }
+        }
+        .featured-collection-container{
+            .collection-container{
+                h1{
+                    font-size:1.5rem;
+                }
+            }
+        }
+        .catalogue-container{
+            &:hover > h1{
+                left:calc(50% - #{$leftMove});
+                background-position:center;
+            }
+            h1{
+                text-align:center;
+                transform:translateX(-50%);
+                left:50%;
+            }
+    
+        }
+    }
+}
+
+@media only screen and (max-width:768px){
+    .main{
+        .featured-collection-container{
+            .hoodies-container{
+                display:none;
+            }
+        }
+        .about-us-container{
+            grid-template-columns:1fr 0px;
+            &:hover > div > h1{
+                left:calc(50% - #{$leftMove});
+            }
+            .about-us-square{
+                h1{
+                    left:50%;
+                    transform:translateX(-50%);
+                    text-align:center;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:600px){
+    .main{
+        .header-text{
+            top:150px;
+        }
+    }
 }

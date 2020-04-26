@@ -64,9 +64,6 @@ h1 {
   width: 100%;
 }
 
-.main {
-  background-color: darkgreen;
-}
 .main .header-text {
   position: absolute;
   top: 297px;
@@ -111,7 +108,14 @@ h1 {
   flex-direction: row;
   height: 423px;
 }
-.main .featured-collection-container h1 {
+.main .featured-collection-container .collection-container {
+  text-align: center;
+}
+.main .featured-collection-container .collection-container h1 {
+  display: inline-block;
+  margin: auto;
+  position: relative;
+  cursor: pointer;
   text-transform: uppercase;
   font-family: "upgrade", sans-serif;
   font-weight: 500;
@@ -119,11 +123,26 @@ h1 {
   text-align: center;
   margin-top: 160px;
 }
+.main .featured-collection-container .collection-container h1::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  transition: all 0.4s ease;
+}
+.main .featured-collection-container .collection-container h1:hover::after {
+  width: 100%;
+}
 .main .featured-collection-container .hoodies-container {
   background-color: darkred;
   background-image: url(assets/Black-Lifestyle-Back.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  width: 100%;
   height: 100%;
 }
 .main .featured-collection-container .summer-container {
@@ -131,12 +150,14 @@ h1 {
   background-image: url(assets/palm-trees.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .main .featured-collection-container .accessories-container {
   background-color: grey;
   background-image: url(assets/black-man-with-headphones.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .main .featured-collection-container > div {
   flex: 1;
@@ -150,12 +171,16 @@ h1 {
   text-transform: uppercase;
   position: relative;
 }
+.main .catalogue-container:hover > h1 {
+  left: 630px;
+}
 .main .catalogue-container h1 {
   top: 100px;
   left: 650px;
   position: absolute;
   font-size: 64px;
   text-align: right;
+  transition: all 0.5s ease;
 }
 .main .catalogue-container h1::after {
   content: "";
@@ -172,18 +197,24 @@ h1 {
   height: 635px;
   grid-template-columns: 1fr 1fr;
 }
+.main .about-us-container:hover > div > h1 {
+  left: 116px;
+}
 .main .about-us-container .about-us-square {
   background-color: darkcyan;
   position: relative;
   background-image: url(assets/women-facing-away.png);
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 .main .about-us-container .about-us-square h1 {
   font-size: 64px;
   position: absolute;
   top: 247px;
   left: 96px;
+  transition: all 0.5s ease;
 }
 .main .about-us-container .about-us-square h1::after {
   content: "";
@@ -233,7 +264,11 @@ h1 {
   justify-content: space-evenly;
   grid-column-start: 1;
   grid-column-end: 3;
+  padding: 60px;
   height: 240px;
+}
+.footer p {
+  font-size: 1rem;
 }
 .footer h2 {
   font-family: "upgrade", sans-serif;
@@ -243,6 +278,7 @@ h1 {
   font-weight: 400;
   text-align: center;
   position: relative;
+  font-size: 1.3rem;
 }
 .footer h2::before {
   content: url(assets/Deco.png);
@@ -286,15 +322,7 @@ h1 {
     transition: all 0.4s ease;
   }
 
-  .fixed-menu {
-    display: block;
-    position: fixed;
-    overflow: hidden;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-  }
-  .fixed-menu .toggler {
+  .toggler {
     position: absolute;
     top: 0;
     left: 0;
@@ -305,11 +333,11 @@ h1 {
     opacity: 0;
     margin: 1rem;
   }
-  .fixed-menu .hamburger {
+
+  .hamburger {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
     width: 60px;
     height: 60px;
     padding: 1rem;
@@ -317,9 +345,12 @@ h1 {
     align-items: center;
     justify-content: center;
     margin: 20px;
+    z-index: 1;
+    cursor: pointer;
     margin-left: 30px;
   }
-  .fixed-menu .hamburger > div {
+
+  .hamburger > div {
     position: relative;
     width: 100%;
     height: 2px;
@@ -329,7 +360,7 @@ h1 {
     justify-content: center;
     transition: all 0.4s ease;
   }
-  .fixed-menu .hamburger > div::before, .fixed-menu .hamburger > div::after {
+  .hamburger > div::before, .hamburger > div::after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -338,24 +369,85 @@ h1 {
     height: inherit;
     background-color: inherit;
   }
-  .fixed-menu .hamburger > div::after {
+  .hamburger > div::after {
     top: 10px;
   }
-  .fixed-menu .toggler:checked + .hamburger > div {
+
+  .toggler:checked + .hamburger > div {
     transform: rotate(135deg);
   }
-  .fixed-menu .toggler:checked + .hamburger > div::before, .fixed-menu .toggler:checked + .hamburger > div::after {
+  .toggler:checked + .hamburger > div::before, .toggler:checked + .hamburger > div::after {
     top: 0;
     transform: rotate(90deg);
   }
-  .fixed-menu .toggler:checked:hover + .hamburger > div {
+
+  .toggler:checked:hover + .hamburger > div {
     transform: rotate(225deg);
+  }
+
+  .fixed-menu {
+    display: block;
+    position: fixed;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    z-index: 1;
   }
 
   .fixed-menu .toggler:checked ~ .menu {
     visibility: visible;
     opacity: 1;
     height: 100%;
+  }
+}
+@media only screen and (max-width: 1070px) {
+  .main .header-text {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .main .header-text h1 {
+    text-align: center;
+  }
+  .main .header-text p {
+    width: 246.3px;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .main .featured-collection-container .collection-container h1 {
+    font-size: 1.5rem;
+  }
+  .main .catalogue-container:hover > h1 {
+    left: calc(50% - 20px);
+    background-position: center;
+  }
+  .main .catalogue-container h1 {
+    text-align: center;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main .featured-collection-container .hoodies-container {
+    display: none;
+  }
+  .main .about-us-container {
+    grid-template-columns: 1fr 0px;
+  }
+  .main .about-us-container:hover > div > h1 {
+    left: calc(50% - 20px);
+  }
+  .main .about-us-container .about-us-square h1 {
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .main .header-text {
+    top: 150px;
   }
 }
 
