@@ -12,6 +12,7 @@ $montserrat: 'Montserrat', sans-serif;
 *{
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 h2 , h3 , h4, h5, h6, p{
     color:white;
@@ -33,6 +34,9 @@ h1{
 .menu{
     background-color:$black;
     height:2158px;
+    a{
+        text-decoration:none;
+    }
     img{
         display:block;
         margin:auto;
@@ -43,9 +47,30 @@ h1{
         font-weight: lighter;
         letter-spacing: 4px;
         margin-top:90px;
+        list-style-type:none;
         li{
             text-align:center;
             margin-bottom:60px;
+            p{
+                cursor:pointer;
+                position:relative;
+                display:inline-block;
+                margin:auto;
+                text-align:center;
+                &::after{
+                    content:"";
+                    width:0;
+                    height:2px;
+                    background-color:white;
+                    position:absolute;
+                    bottom:-20px;
+                    left:0;
+                    transition:all 0.4s ease;
+                }
+                &:hover::after{
+                    width:100%;
+                }
+            }
         }
     }
 }
@@ -59,8 +84,11 @@ h1{
     }
     header{
         position:relative;
+        z-index:0;
         height:700px;
         background-image: url(assets/black-man-with-cap-and-watch.png);
+        background-repeat:no-repeat;
+        background-size:cover;
         h1{
             &::after{
                 content:"";
@@ -103,15 +131,21 @@ h1{
         .hoodies-container{
             background-color:darkred;
             background-image:url(assets/Black-Lifestyle-Back.png);
+            background-repeat:no-repeat;
+            background-size:cover;
             height:100%;
         }
         .summer-container{
             background-color:orange;
             background-image:url(assets/palm-trees.png);
+            background-repeat:no-repeat;
+            background-size:cover;
         }
         .accessories-container{
             background-color:grey;
             background-image:url(assets/black-man-with-headphones.png);
+            background-repeat:no-repeat;
+            background-size:cover;
         }
     }
          .featured-collection-container > div{
@@ -121,6 +155,8 @@ h1{
         height:400px;
         background:white;
         background-image:url(assets/graffiti-walls.png);
+        background-repeat:no-repeat;
+        background-size:cover;
         text-transform:uppercase;
         position:relative;
         h1{
@@ -149,6 +185,8 @@ h1{
             background-color:darkcyan;
             position:relative;
             background-image:url(assets/women-facing-away.png);
+            background-repeat:no-repeat;
+            background-size:cover;
             h1{
                 font-size:64px;
                 position:absolute;
@@ -174,27 +212,38 @@ h1{
             .photo-square1{
                 background-color:darkorange;
                 background-image:url(assets/man-facing-wall-with-symbols.png);
+                background-repeat:no-repeat;
+                background-size:cover;
             }
             .photo-square2{
                 background-color:darkred;
                 background-image:url(assets/women-standing-on-fence.png);
+                background-repeat:no-repeat;
+                background-size:cover;
             }
             .photo-square3{
                 background-color:darkgoldenrod;
                 background-image:url(assets/man-opening-smoke.png);
+                background-repeat:no-repeat;
+                background-size:cover;
             }
             .photo-square4{
                 background-color:darkslateblue;
                 background-image:url(assets/women-facing-down.png);
+                background-repeat:no-repeat;
+                background-size:cover;
             }
         }
     }
 }
 .footer{
+    width:100%;
     display: flex;
     flex-direction:column;
     align-items:center;
     justify-content:space-evenly;
+    grid-column-start:1;
+    grid-column-end:3;
     h2{
         font-family:$upgrade;
         text-transform:uppercase;
@@ -218,4 +267,107 @@ p{
     letter-spacing: 4px;
     text-align:center;
 }
+}
+.fixed-menu{
+    display:none;
+}
+
+// Media Queries  
+
+@media only screen and (max-width:1600px){
+    .container{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+    .full-screen-menu{
+        display:none;
+    }
+    .menu-content-container{
+        background-color:rgba(7,16,19 ,0.95);
+        height:100%;
+        top:0;
+        left:0;
+        position:fixed;
+        overflow:hidden;
+        // visibility:hidden;
+        width:100%;
+        height:0px;
+        transform:translateY(-200);
+        opacity:0;
+        transition: all 0.4s ease;
+    }
+            .fixed-menu{
+                display:block;
+                position:fixed;
+                overflow:hidden;
+                z-index:1;
+                width:100%;
+                height:100%;
+                .toggler{
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    z-index:2;
+                    cursor:pointer;
+                    width:60px;
+                    height:60px;
+                    opacity:0;
+                    margin:1rem;
+                }
+                .hamburger{
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    z-index: 1;
+                    width:60px;
+                    height:60px;
+                    padding: 1rem;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    margin:20px;
+                    margin-left:30px;
+                }
+                .hamburger > div{
+                    position:relative;
+                    width:100%;
+                    height:2px;
+                    background-color:white;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    transition: all 0.4s ease;
+                    // top and bottom lines
+                    &::before, &::after{
+                        content:'';
+                        position:absolute;
+                        z-index:1;
+                        top: -10px;
+                        width:100%;
+                        height:inherit;
+                        background-color:inherit;
+                    }
+                    // Moves line down
+                    &::after{
+                        top: 10px;
+                    }
+                }
+                .toggler:checked + .hamburger > div {
+                    transform: rotate(135deg);
+                    // Set the Before and After
+                    &::before, &::after{
+                        top:0;
+                        transform: rotate(90deg);
+                    }
+                }
+                .toggler:checked:hover + .hamburger > div{
+                    transform:rotate(225deg);
+                }
+            }
+            // Show Menu
+            .fixed-menu .toggler:checked ~ .menu{
+                visibility:visible;
+                opacity:1;
+                height:100%;
+            }
 }
